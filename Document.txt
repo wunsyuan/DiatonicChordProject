@@ -1,0 +1,72 @@
+**Diatonic Triad Chords Project**
+
+
+Project Goals
+Choose the action what you want to do
+If you want to find out the diatonic chord of major scale, enter the number 1.
+If you want to find out the diatonci chord of minor scale, enter the numebr 2.
+Then you'll get some diatonic chord information on the screen.
+If you want to exit the program, enter the number -1. 
+For example:
+    Zoey's Diatonic Chord 專案
+    If your chord is major, please enter 1  
+    If your chord is minor, please enter 2  
+    If you want to exit the program, please eenter -1
+    Please enter your number: 1
+    Please enter your tonic: C
+    Your input chord is C D E F G A B
+    _______________________________________________________________________________
+        scale tonic  |        C       D       E       F       G       A       B
+             tierce  |        E       F       G       A       B       C       D
+           diapente  |        G       A       B       C       D       E       F
+              chord  |        C      Dm      Em       F       G      Am    Bdim
+  chord progression  |        1      2m      3m       4       5      6m    7dim
+    _______________________________________________________________________________
+
+
+Diatonic Chords Algorithm
+The following are D major scale example: 
+    D major Tonic               |  D           E            F#         G          A           B             C#         D  |
+    tierce                      |  F#          G            A          B          C#          D             E             |
+    diapente                    |  A           B            C#         D          E           F#            G             |
+    major interval              |      whole        whole        half      whole       whole        whole        half     |
+    major to tierce interval    |  2w         1w1h         1w1h        2w         2w          1w1h         1w1h           |
+    tierce to diapente interval | 1w1h         2w           2w        1w1h       1w1h          2w          1w1h           |
+    chord                       |  D           Em           F#m         G          A           Bm          C#dim          |
+    chord progression           |  1           2m           3m          4          5           6m          7dim           |
+
+==> Use 1 to represent whole step, Use 2 to represent half step 
+==> The interval of major are {1, 1, 0, 1, 1, 1, 0} 
+==> The interval of minor are {1, 0, 1, 1, 0, 1, 1}
+
+    NOTE: 
+    major chord  -> (2 whole step) + (1 whole step and 1 half step)
+    minor chord  -> (1 whole step and 1 half step ) + (2 whole step)
+    augmented chord  -> (2 whole step) + (2 whole step)
+    diminished chord  ->  (1 whole step and 1 half step) + (1 whole step and 1 half step)
+
+
+Programming Thoughts
+1. one vector to store the input scale 
+2. one array to store the scale interval...
+
+               [0]     [1]      [2]    [3]     [4]     [5]     [6] 
+inputScale      D       E       F#      G       A       B       C#
+key             1       2       3       4       5       6       7
+value           D       E       F#      G       A       B       C#
+intervalArr       [0]=1   [1]=1   [2]=0   [3]=1   [4]=1   [5]=1   [6]=0
+                  2w=>2 1w1h=>1
+
+==>  intervalArr[0] + intervalArr[1] = 1+1 = 2
+==>  intervalArr[2] + intervalArr[3] = 0+1 = 1
+==>  major chord:  tierceInterval = 2, diapenteInterval = 1
+==>  minor chord:  tierceInterval = 1, diapenteInterval = 2
+==>  diminished chord:  tierceInterval = 1, diapenteInterval = 1
+==>  augmented chord:  tierceInterval = 2, diapenteInterval = 2
+
+
+D major chord:
+keyboard list: C C# D D# E F F# G G# A A# B C
+D -> 2w -> E -> 2w -> F# -> 1h -> G -> 2w -> A -> 2w -> B -> 2w -> C# -> 1h -> D
+
+    
