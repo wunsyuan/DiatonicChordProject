@@ -14,11 +14,11 @@ void printTable(vector<string>, vector<string>, vector<string>, int arr1[], int 
 int main() {
     int enterNum;
 
-    cout << endl << "Zoey's Diatonic Chord 專案" << endl;
-    cout << "***  If your chord is major, please enter 1  ***" << endl;
-    cout << "***  If your chord is minor, please enter 2  ***" << endl;
-    cout << "***  If you want to exit the program, please eenter -1  ***" << endl;
-    cout << "Please enter your number: ";
+    cout << endl << "Welcome to wunsyuan's Diatonic Triad Chords Project" << endl;
+    cout << "***  To find diatonic chords in a major scale, enter 1  ***" << endl;
+    cout << "***  To find diatonic chords in a minor scale, enter 2  ***" << endl;
+    cout << "***  To exit the program, enter -1  ***" << endl;
+    cout << "Please enter your choice: ";
 
     while(cin >> enterNum) {
         if (enterNum == -1) {
@@ -29,16 +29,19 @@ int main() {
             MajorScale();
         else if (enterNum == 2)
             MinorScale();
-        cout << endl << endl << "***  If your chord is major, please enter 1  ***" << endl;
-        cout << "***  If your chord is minor, please enter 2  ***" << endl;
-        cout << "***  If you want to exit the program, please enter -1  ***" << endl;
-        cout << "Please enter your number: ";
+        else {
+            cout << endl << "Please enter a valid number!!!" << endl;
+        }
+        cout << endl << "Welcome to wunsyuan's Diatonic Triad Chords Project" << endl;
+        cout << "***  To find diatonic chords in a major scale, enter 1  ***" << endl;
+        cout << "***  To find diatonic chords in a minor scale, enter 2  ***" << endl;
+        cout << "***  To exit the program, enter -1  ***" << endl;
+        cout << "Please enter your choice: ";
     }
     return 0;
 }
 
-void MajorScale()
-{
+void MajorScale() {
     string pianoScale[12] = {"C", "C#", "D", "D#", "E", "F", "F#", "G", "G#", "A", "A#", "B"};
     string scale, mainScale;
     int tierceInterval[7] = {-1}, diapenteInterval[7] = {-1};
@@ -48,7 +51,7 @@ void MajorScale()
     vector<string> tierce;
     vector<string> diapente;
 
-    cout << "Please enter your main chords: ";
+    cout << "Please enter the main chord: ";
     cin >> mainScale;
 
     // 找出大調音階
@@ -82,8 +85,7 @@ void MajorScale()
     printTable(inputScale, tierce, diapente, tierceInterval, diapenteInterval);
 }
 
-void MinorScale()
-{
+void MinorScale() {
     string pianoScale[12] = {"C", "C#", "D", "D#", "E", "F", "F#", "G", "G#", "A", "A#", "B"};
     string scale, mainScale;
     int tierceInterval[7] = {-1}, diapenteInterval[7] = {-1};
@@ -127,8 +129,7 @@ void MinorScale()
     printTable(inputScale, tierce, diapente, tierceInterval, diapenteInterval);
 }
 
-void printTable(vector<string> inputScale, vector<string> tierce, vector<string> diapente, int tierceInterval[], int diapenteInterval[])
-{
+void printTable(vector<string> inputScale, vector<string> tierce, vector<string> diapente, int tierceInterval[], int diapenteInterval[]) {
     // 輸出Diatonic Chords表格
     cout << endl << setw(16) << "scale tonic" << setw(4) << "| ";
     for (int printIndex = 0; printIndex < 7; ++printIndex)
